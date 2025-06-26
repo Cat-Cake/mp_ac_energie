@@ -8,4 +8,5 @@ streamlit>=1.34
 requests
 fpdf>=1.7.2
 streamlit
- streamlit-folium>=0.25.0
+streamlit-folium>=0.25.0
+streamlit-aggrid>=1.0.5
