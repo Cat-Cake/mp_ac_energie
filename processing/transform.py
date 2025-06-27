@@ -77,19 +77,23 @@ def prepare_production_region_sector(data):
 
 @st.cache_data
 def get_or_prepare_regional_realtime(data, cache_path="data/realtime_cache.parquet"):
+    print("➡️ Exemple de ligne :", data[0])
     if os.path.exists(cache_path):
-        print("Chargement depuis le cache...")
-        return pd.read_parquet(cache_path)
+        try:
+            df = pd.read_parquet(cache_path)
+            if "date_heure" in df.columns:
+                print("Chargement depuis le cache.")
+                return df
+            else:
+                print("Colonne 'date_heure' manquante : régénération du cache.")
+        except Exception as e:
+            print(f"Erreur de lecture du cache : {e}")
 
     df = prepare_regional_realtime(data)
-
     os.makedirs(os.path.dirname(cache_path), exist_ok=True)
-
     df.to_parquet(cache_path)
-    print("Données enregistrées en cache.")
-
+    print("Nouveau cache enregistré.")
     return df
-
 
 @st.cache_data
 def prepare_regional_realtime(data):

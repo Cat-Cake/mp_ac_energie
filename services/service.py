@@ -54,7 +54,7 @@ def get_data_eco2mix_regional_tr():
         if len(results) < limit:
             break
 
-    return all_results.sort(key=lambda x: x["date_heure"], reverse=True)
+    return all_results
 
 
 def get_data_ecogas_tr():

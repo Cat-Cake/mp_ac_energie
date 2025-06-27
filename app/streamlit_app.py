@@ -81,7 +81,7 @@ with (tab1):
     color_counts.columns = ["Niveau Ecogaz", "Nombre de jours"]
 
     st.subheader("Répartition des niveaux Ecogaz sur 2025")
-    st.markdown("""
+    st.info("""
     **Légende des niveaux Ecogaz** :
 
     - **Green** : La situation est normale, les réserves de gaz sont suffisantes.  
